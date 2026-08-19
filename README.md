@@ -1,5 +1,5 @@
 # Tactical Brawl
 
-An unmaintained fighting-game prototype inspired by Naruto Senki.
+An unmaintained fighting-game prototype.
 
 Fork it freely and build your own version.
