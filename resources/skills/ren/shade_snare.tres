@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="SkillData" format=3]
+
+[ext_resource type="Script" path="res://scripts/combat/skill_data.gd" id="1_ren"]
+
+[resource]
+script = ExtResource("1_ren")
+skill_name = &"shade_snare"
+unlock_level = 2
+skill_type = 15
+cooldown = 12.0
+damage_multiplier = 6.0
+range = 300.0
+knockback = 0.0
+lifetime = 12.0

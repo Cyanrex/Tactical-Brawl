@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="SkillData" format=3 uid="uid://5bl0pvncffg2"]
+
+[ext_resource type="PackedScene" uid="uid://cwdcfocma5kqm" path="res://scenes/combat/projectiles/Projectile.tscn" id="1_s313m"]
+[ext_resource type="Script" uid="uid://dsr84w3avnv0d" path="res://scripts/combat/skill_data.gd" id="2_wb8wf"]
+
+[resource]
+script = ExtResource("2_wb8wf")
+skill_name = &"flame_bolts"
+skill_type = 1
+unlock_level = 2
+damage_multiplier = 8.4
+range = 320.0
+lifetime = 0.4
+projectile_scene = ExtResource("1_s313m")

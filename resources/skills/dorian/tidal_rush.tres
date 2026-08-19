@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="SkillData" format=3]
+
+[ext_resource type="Script" path="res://scripts/combat/skill_data.gd" id="1_dorian"]
+
+[resource]
+script = ExtResource("1_dorian")
+skill_name = &"tidal_rush"
+skill_type = 7
+cooldown = 6.0
+damage_multiplier = 9.0
+range = 260.0
+knockback = 140.0
+lifetime = 0.4

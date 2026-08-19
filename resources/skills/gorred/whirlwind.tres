@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="SkillData" format=3]
+
+[ext_resource type="Script" path="res://scripts/combat/skill_data.gd" id="1_gorred"]
+
+[resource]
+script = ExtResource("1_gorred")
+skill_name = &"whirlwind"
+skill_type = 23
+unlock_level = 2
+cooldown = 8.0
+damage_multiplier = 1.5
+range = 140.0
+lifetime = 1.2

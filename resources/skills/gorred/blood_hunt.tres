@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="SkillData" format=3]
+
+[ext_resource type="Script" path="res://scripts/combat/skill_data.gd" id="1_gorred"]
+
+[resource]
+script = ExtResource("1_gorred")
+skill_name = &"blood_hunt"
+skill_type = 24
+unlock_level = 6
+cooldown = 30.0
+damage_multiplier = 5.0
+range = 520.0
+knockback = 200.0
+lifetime = 0.3

@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://c6ybf2i1wqp6r"]
+
+[ext_resource type="Script" uid="uid://dijsfute1xx13" path="res://scripts/structures/tower.gd" id="1_6ji6x"]
+[ext_resource type="Texture2D" uid="uid://cxvgmxbxi4aun" path="res://resources/assets/tower/monolith4.png" id="2_tower"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_68e7d"]
+size = Vector2(70, 70)
+
+[node name="AllyBase" type="StaticBody2D" unique_id=1247306757]
+collision_layer = 32
+collision_mask = 0
+script = ExtResource("1_6ji6x")
+faction = &"ally"
+is_main = true
+
+[node name="Body" type="Sprite2D" parent="." unique_id=1588835155]
+texture = ExtResource("2_tower")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=224160128]
+shape = SubResource("RectangleShape2D_68e7d")

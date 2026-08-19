@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="SkillData" format=3]
+
+[ext_resource type="Script" path="res://scripts/combat/skill_data.gd" id="1_vrk"]
+
+[resource]
+script = ExtResource("1_vrk")
+skill_name = &"bouncy_bomb"
+skill_type = 18
+cooldown = 9.0
+damage_multiplier = 9.6
+range = 320.0
+knockback = 200.0
+lifetime = 15.0

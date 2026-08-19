@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="SkillData" format=3]
+
+[ext_resource type="Script" path="res://scripts/combat/skill_data.gd" id="1_dorian"]
+
+[resource]
+script = ExtResource("1_dorian")
+skill_name = &"crushing_wave"
+unlock_level = 2
+skill_type = 8
+cooldown = 10.0
+damage_multiplier = 7.2
+range = 200.0
+knockback = 220.0
+lifetime = 0.35

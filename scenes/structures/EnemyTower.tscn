@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://0r0vifkd6uvb"]
+
+[ext_resource type="Script" uid="uid://dijsfute1xx13" path="res://scripts/structures/tower.gd" id="1_b50h5"]
+[ext_resource type="Texture2D" uid="uid://cxvgmxbxi4aun" path="res://resources/assets/tower/monolith4.png" id="2_tower"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i0qxj"]
+size = Vector2(70, 70)
+
+[node name="EnemyTower" type="StaticBody2D"]
+collision_layer = 32
+collision_mask = 0
+script = ExtResource("1_b50h5")
+faction = &"enemy"
+is_main = true
+
+[node name="Body" type="Sprite2D" parent="."]
+texture = ExtResource("2_tower")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_i0qxj")

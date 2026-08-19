@@ -1,0 +1,75 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" uid="uid://b01ilu22oq4ty" path="res://scripts/actors/enemy_hero.gd" id="1_lorvath"]
+[ext_resource type="Script" uid="uid://y73csbg5lq1d" path="res://scripts/actors/lorvath_kit.gd" id="2_lorvath"]
+[ext_resource type="Resource" path="res://resources/skills/lorvath/raise_minions.tres" id="3_lorvath"]
+[ext_resource type="Resource" path="res://resources/skills/lorvath/skull_seeker.tres" id="4_lorvath"]
+[ext_resource type="Resource" path="res://resources/skills/lorvath/grave_clone.tres" id="5_lorvath"]
+[ext_resource type="Resource" path="res://resources/skills/lorvath/mass_revive.tres" id="6_lorvath"]
+[ext_resource type="Script" path="res://scripts/ai/ai_agent.gd" id="7_ai"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oe7od"]
+size = Vector2(40, 50)
+
+[node name="EnemyLorvath" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 35
+script = ExtResource("1_lorvath")
+kit_script = ExtResource("2_lorvath")
+max_hp = 4500
+attack = 160
+hp_per_level = 2250
+attack_per_level = 25
+move_speed = 190.0
+skill_1 = ExtResource("3_lorvath")
+skill_2 = ExtResource("4_lorvath")
+skill_3 = ExtResource("5_lorvath")
+ultimate = ExtResource("6_lorvath")
+faction = &"enemy"
+role = 3
+exp_value = 100.0
+basic_attack_range = 300.0
+ai_cast_ranges = Array[float]([300.0, 380.0, 240.0, 260.0])
+
+[node name="AIAgent" type="Node" parent="."]
+script = ExtResource("7_ai")
+target_order = Array[StringName]([&"heroes", &"troops", &"structures"])
+hero_priority_range = 600.0
+skill_engage_range = 380.0
+retreat_enabled = true
+retreat_hp_ratio = 0.2
+resume_hp_ratio = 1.0
+retreat_regen = 125.0
+
+[node name="Body" type="Polygon2D" parent="."]
+color = Color(0.66, 0.35, 0.2, 1)
+polygon = PackedVector2Array(-20, -25, 20, -25, 20, 25, -20, 25)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_oe7od")
+
+[node name="AttackOrigin" type="Marker2D" parent="."]
+position = Vector2(30, 0)
+
+[node name="AttackCooldownTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="HitStunTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="AttackLockTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="Skill1Timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="Skill2Timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="Skill3Timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="UltimateTimer" type="Timer" parent="."]
+one_shot = true
+
+one_shot = true

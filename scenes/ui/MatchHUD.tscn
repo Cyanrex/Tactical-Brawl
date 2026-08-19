@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://dahu35fsddswg"]
+
+[ext_resource type="Script" uid="uid://cw5kd4ypr0f1j" path="res://scripts/ui/match_hud.gd" id="1_jo1ia"]
+
+[node name="MatchHUD" type="CanvasLayer" unique_id=2102436608]
+script = ExtResource("1_jo1ia")

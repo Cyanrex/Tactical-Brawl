@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="SkillData" format=3]
+
+[ext_resource type="Script" path="res://scripts/combat/skill_data.gd" id="1_ren"]
+
+[resource]
+script = ExtResource("1_ren")
+skill_name = &"shadow_spike"
+skill_type = 14
+cooldown = 8.0
+damage_multiplier = 6.6
+range = 420.0
+knockback = 40.0
+lifetime = 1.0

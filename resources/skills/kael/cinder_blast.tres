@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="SkillData" format=3 uid="uid://c7xppi6sr22el"]
+
+[ext_resource type="PackedScene" uid="uid://deby8sprfslpf" path="res://scenes/combat/hitboxes/BasicAttackHitbox.tscn" id="1_6j6ft"]
+[ext_resource type="Script" uid="uid://dsr84w3avnv0d" path="res://scripts/combat/skill_data.gd" id="2_6d5ft"]
+
+[resource]
+script = ExtResource("2_6d5ft")
+skill_name = &"cinder_blast"
+skill_type = 2
+unlock_level = 4
+cooldown = 7.0
+damage_multiplier = 7.2
+range = 110.0
+knockback = 280.0
+lifetime = 0.3
+hitbox_scene = ExtResource("1_6j6ft")

@@ -1,0 +1,76 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/actors/enemy_hero.gd" id="1_wallace"]
+[ext_resource type="Script" path="res://scripts/actors/wallace_kit.gd" id="2_wallace"]
+[ext_resource type="Resource" path="res://resources/skills/wallace/phase_dash.tres" id="3_wallace"]
+[ext_resource type="Resource" path="res://resources/skills/wallace/blood_whip.tres" id="4_wallace"]
+[ext_resource type="Resource" path="res://resources/skills/wallace/counter_stance.tres" id="5_wallace"]
+[ext_resource type="Resource" path="res://resources/skills/wallace/blood_vortex.tres" id="6_wallace"]
+[ext_resource type="Script" path="res://scripts/ai/ai_agent.gd" id="7_wallace"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wallace_e"]
+size = Vector2(40, 50)
+
+[node name="EnemyWallace" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 35
+script = ExtResource("1_wallace")
+skill_1 = ExtResource("3_wallace")
+skill_2 = ExtResource("4_wallace")
+skill_3 = ExtResource("5_wallace")
+ultimate = ExtResource("6_wallace")
+ai_cast_ranges = Array[float]([300.0, 420.0, 80.0, 200.0])
+kit_script = ExtResource("2_wallace")
+max_hp = 5500
+attack = 170
+hp_per_level = 2750
+attack_per_level = 25
+move_speed = 225.0
+faction = &"enemy"
+role = 1
+exp_value = 100.0
+
+[node name="AIAgent" type="Node" parent="."]
+script = ExtResource("7_wallace")
+target_order = Array[StringName]([&"heroes", &"troops", &"structures"])
+hero_priority_range = 600.0
+skill_engage_range = 420.0
+skill_cast_order = Array[int]([1, 2, 3, 4])
+prefer_basic_attack_in_range = true
+retreat_enabled = true
+retreat_hp_ratio = 0.2
+resume_hp_ratio = 1.0
+retreat_regen = 125.0
+
+[node name="Body" type="Polygon2D" parent="."]
+color = Color(0.45, 0.04, 0.08, 1)
+polygon = PackedVector2Array(-20, -25, 20, -25, 20, 25, -20, 25)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_wallace_e")
+
+[node name="AttackOrigin" type="Marker2D" parent="."]
+position = Vector2(30, 0)
+
+[node name="AttackCooldownTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="HitStunTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="AttackLockTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="Skill1Timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="Skill2Timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="Skill3Timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="UltimateTimer" type="Timer" parent="."]
+one_shot = true
+
+one_shot = true

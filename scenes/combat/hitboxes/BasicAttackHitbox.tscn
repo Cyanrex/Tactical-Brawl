@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://deby8sprfslpf"]
+
+[ext_resource type="Script" uid="uid://f1v1kfkcbtuy" path="res://scripts/combat/hitbox.gd" id="1_nf4t5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ra06i"]
+size = Vector2(40, 40)
+
+[node name="BasicAttackHitbox" type="Area2D" unique_id=1108803165]
+collision_layer = 8
+collision_mask = 36
+script = ExtResource("1_nf4t5")
+knockback_strength = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1624707826]
+shape = SubResource("RectangleShape2D_ra06i")
+
+[node name="DebugVisual" type="Polygon2D" parent="." unique_id=1428907642]
+color = Color(1, 1, 1, 0.33333334)
+polygon = PackedVector2Array(-20, -20, 20, -20, 20, 20, -20, 20)

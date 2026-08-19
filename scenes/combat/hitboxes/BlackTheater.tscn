@@ -1,0 +1,18 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/combat/black_theater.gd" id="1_theater"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_theater"]
+radius = 260.0
+
+[node name="BlackTheater" type="Area2D"]
+collision_layer = 8
+collision_mask = 36
+script = ExtResource("1_theater")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_theater")
+
+[node name="Visual" type="Polygon2D" parent="."]
+color = Color(0.32, 0.22, 0.72, 0.13)
+polygon = PackedVector2Array(-260, 0, 0, -260, 260, 0, 0, 260)

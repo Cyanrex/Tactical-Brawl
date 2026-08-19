@@ -1,0 +1,76 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" uid="uid://b01ilu22oq4ty" path="res://scripts/actors/enemy_hero.gd" id="1_ren"]
+[ext_resource type="Script" path="res://scripts/actors/ren_kit.gd" id="2_ren"]
+[ext_resource type="Resource" path="res://resources/skills/ren/shadow_spike.tres" id="3_ren"]
+[ext_resource type="Resource" path="res://resources/skills/ren/shade_snare.tres" id="4_ren"]
+[ext_resource type="Resource" path="res://resources/skills/ren/shadow_step.tres" id="5_ren"]
+[ext_resource type="Resource" path="res://resources/skills/ren/black_theater.tres" id="6_ren"]
+[ext_resource type="Script" path="res://scripts/ai/ai_agent.gd" id="7_ren"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ren"]
+size = Vector2(40, 50)
+
+[node name="EnemyRen" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 35
+script = ExtResource("1_ren")
+skill_1 = ExtResource("3_ren")
+skill_2 = ExtResource("4_ren")
+skill_3 = ExtResource("5_ren")
+ultimate = ExtResource("6_ren")
+ai_cast_ranges = Array[float]([420.0, 300.0, 160.0, 220.0])
+kit_script = ExtResource("2_ren")
+max_hp = 4750
+attack = 170
+hp_per_level = 2375
+attack_per_level = 25
+move_speed = 240.0
+faction = &"enemy"
+role = 1
+exp_value = 100.0
+
+[node name="AIAgent" type="Node" parent="."]
+script = ExtResource("7_ren")
+target_order = Array[StringName]([&"heroes", &"troops", &"structures"])
+hero_priority_range = 600.0
+skill_engage_range = 380.0
+skill_cast_order = Array[int]([1, 2, 3, 4])
+prefer_basic_attack_in_range = true
+retreat_enabled = true
+retreat_hp_ratio = 0.2
+resume_hp_ratio = 1.0
+retreat_regen = 125.0
+
+[node name="Body" type="Polygon2D" parent="."]
+color = Color(0.32, 0.28, 0.72, 1)
+polygon = PackedVector2Array(-20, -25, 20, -25, 20, 25, -20, 25)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_ren")
+
+[node name="AttackOrigin" type="Marker2D" parent="."]
+position = Vector2(30, 0)
+
+[node name="AttackCooldownTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="HitStunTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="AttackLockTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="Skill1Timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="Skill2Timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="Skill3Timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="UltimateTimer" type="Timer" parent="."]
+one_shot = true
+
+one_shot = true

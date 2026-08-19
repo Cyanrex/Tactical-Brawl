@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://daolo4jfs7m0a"]
+
+[ext_resource type="Script" uid="uid://cgso2m645g2kg" path="res://scripts/systems/spawn_manager.gd" id="1_hyegr"]
+
+[node name="TroopSpawner" type="Node2D" unique_id=1540084926]
+script = ExtResource("1_hyegr")
+initial_wave_size = 12
+spawn_interval = 15.0
+
+[node name="AllySpawnPoint" type="Marker2D" parent="." unique_id=796151492]
+position = Vector2(-480, 0)
+
+[node name="EnemySpawnPoint" type="Marker2D" parent="." unique_id=2088562185]
+position = Vector2(480, 0)
+
+[node name="AllySpawnTimer" type="Timer" parent="." unique_id=1268511894]
+wait_time = 15.0
+
+[node name="EnemySpawnTimer" type="Timer" parent="." unique_id=911887765]
+wait_time = 15.0

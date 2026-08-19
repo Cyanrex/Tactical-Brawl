@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="SkillData" format=3]
+
+[ext_resource type="Script" path="res://scripts/combat/skill_data.gd" id="1_zhalreth"]
+
+[resource]
+script = ExtResource("1_zhalreth")
+skill_name = &"bloodlust"
+skill_type = 9
+unlock_level = 4
+cooldown = 14.0
+damage_multiplier = 1.0
+range = 150.0

@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="SkillData" format=3]
+
+[ext_resource type="Script" path="res://scripts/combat/skill_data.gd" id="1_zhalreth"]
+
+[resource]
+script = ExtResource("1_zhalreth")
+skill_name = &"dark_aura"
+skill_type = 10
+unlock_level = 6
+cooldown = 30.0
+damage_multiplier = 1.0
+range = 150.0
+lifetime = 6.0

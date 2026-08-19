@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="SkillData" format=3 uid="uid://b12v6d2ajwq61"]
+
+[ext_resource type="Script" uid="uid://dsr84w3avnv0d" path="res://scripts/combat/skill_data.gd" id="1_clone"]
+
+[resource]
+script = ExtResource("1_clone")
+skill_name = &"grave_clone"
+skill_type = 5
+unlock_level = 4
+cooldown = 18.0
+damage_multiplier = 1.0

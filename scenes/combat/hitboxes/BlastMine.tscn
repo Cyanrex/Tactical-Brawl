@@ -1,0 +1,18 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/combat/blast_mine.gd" id="1_bmine"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bmine"]
+radius = 22.0
+
+[node name="BlastMine" type="Area2D"]
+collision_layer = 0
+collision_mask = 36
+script = ExtResource("1_bmine")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_bmine")
+
+[node name="Visual" type="Polygon2D" parent="."]
+color = Color(0.95, 0.7, 0.25, 0.06)
+polygon = PackedVector2Array(-22, 0, 0, -22, 22, 0, 0, 22)

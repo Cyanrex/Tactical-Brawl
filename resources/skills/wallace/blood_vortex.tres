@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="SkillData" format=3]
+
+[ext_resource type="Script" path="res://scripts/combat/skill_data.gd" id="1_wallace"]
+
+[resource]
+script = ExtResource("1_wallace")
+skill_name = &"blood_vortex"
+skill_type = 13
+unlock_level = 6
+cooldown = 30.0
+damage_multiplier = 3.0
+range = 200.0
+lifetime = 2.0

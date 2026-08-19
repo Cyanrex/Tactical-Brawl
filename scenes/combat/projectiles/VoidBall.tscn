@@ -1,0 +1,10 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/combat/void_ball.gd" id="1_ball"]
+
+[node name="VoidBall" type="Node2D"]
+script = ExtResource("1_ball")
+
+[node name="Visual" type="Polygon2D" parent="."]
+color = Color(0.66, 0.4, 1, 0.95)
+polygon = PackedVector2Array(-14, 0, -10, 10, 0, 14, 10, 10, 14, 0, 10, -10, 0, -14, -10, -10)

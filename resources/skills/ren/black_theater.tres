@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="SkillData" format=3]
+
+[ext_resource type="Script" path="res://scripts/combat/skill_data.gd" id="1_ren"]
+
+[resource]
+script = ExtResource("1_ren")
+skill_name = &"black_theater"
+skill_type = 17
+unlock_level = 6
+cooldown = 32.0
+damage_multiplier = 2.4
+range = 260.0
+lifetime = 8.0

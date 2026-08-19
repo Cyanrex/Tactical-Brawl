@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="SkillData" format=3]
+
+[ext_resource type="Script" path="res://scripts/combat/skill_data.gd" id="1_shift"]
+
+[resource]
+script = ExtResource("1_shift")
+skill_name = &"void_shift"
+skill_type = 7
+cooldown = 8.0
+damage_multiplier = 7.2
+range = 300.0
+knockback = 200.0
+lifetime = 0.3

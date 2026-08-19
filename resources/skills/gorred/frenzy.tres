@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="SkillData" format=3]
+
+[ext_resource type="Script" path="res://scripts/combat/skill_data.gd" id="1_gorred"]
+
+[resource]
+script = ExtResource("1_gorred")
+skill_name = &"frenzy"
+skill_type = 9
+unlock_level = 4
+cooldown = 14.0
+damage_multiplier = 1.0
+range = 0.0
+lifetime = 6.0

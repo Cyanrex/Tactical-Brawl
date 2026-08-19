@@ -1,0 +1,76 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" uid="uid://b01ilu22oq4ty" path="res://scripts/actors/enemy_hero.gd" id="1_zhalreth"]
+[ext_resource type="Script" path="res://scripts/actors/zhalreth_kit.gd" id="2_zhalreth"]
+[ext_resource type="Resource" path="res://resources/skills/zhalreth/shadow_dash.tres" id="3_zhalreth"]
+[ext_resource type="Resource" path="res://resources/skills/zhalreth/crippling_wave.tres" id="4_zhalreth"]
+[ext_resource type="Resource" path="res://resources/skills/zhalreth/bloodlust.tres" id="5_zhalreth"]
+[ext_resource type="Resource" path="res://resources/skills/zhalreth/dark_aura.tres" id="6_zhalreth"]
+[ext_resource type="Script" path="res://scripts/ai/ai_agent.gd" id="7_zhalreth"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oe7od"]
+size = Vector2(40, 50)
+
+[node name="EnemyZhalreth" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 35
+script = ExtResource("1_zhalreth")
+skill_1 = ExtResource("3_zhalreth")
+skill_2 = ExtResource("4_zhalreth")
+skill_3 = ExtResource("5_zhalreth")
+ultimate = ExtResource("6_zhalreth")
+ai_cast_ranges = Array[float]([300.0, 260.0, 150.0, 200.0])
+kit_script = ExtResource("2_zhalreth")
+max_hp = 6000
+attack = 170
+hp_per_level = 3000
+attack_per_level = 25
+move_speed = 205.0
+faction = &"enemy"
+role = 0
+exp_value = 100.0
+
+[node name="AIAgent" type="Node" parent="."]
+script = ExtResource("7_zhalreth")
+target_order = Array[StringName]([&"heroes", &"troops", &"structures"])
+hero_priority_range = 600.0
+skill_engage_range = 380.0
+skill_cast_order = Array[int]([1, 2, 3, 4])
+prefer_basic_attack_in_range = true
+retreat_enabled = true
+retreat_hp_ratio = 0.2
+resume_hp_ratio = 1.0
+retreat_regen = 125.0
+
+[node name="Body" type="Polygon2D" parent="."]
+color = Color(0.55, 0.12, 0.42, 1)
+polygon = PackedVector2Array(-20, -25, 20, -25, 20, 25, -20, 25)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_oe7od")
+
+[node name="AttackOrigin" type="Marker2D" parent="."]
+position = Vector2(30, 0)
+
+[node name="AttackCooldownTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="HitStunTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="AttackLockTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="Skill1Timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="Skill2Timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="Skill3Timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="UltimateTimer" type="Timer" parent="."]
+one_shot = true
+
+one_shot = true

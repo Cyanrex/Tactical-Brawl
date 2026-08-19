@@ -1,0 +1,62 @@
+[gd_scene format=3 uid="uid://gp3fogdocwg3"]
+
+[ext_resource type="Script" uid="uid://c6ayehltet1tv" path="res://scripts/actors/player_hero.gd" id="1_lorvath"]
+[ext_resource type="Script" uid="uid://y73csbg5lq1d" path="res://scripts/actors/lorvath_kit.gd" id="2_lorvath"]
+[ext_resource type="Resource" path="res://resources/skills/lorvath/raise_minions.tres" id="3_lorvath"]
+[ext_resource type="Resource" uid="uid://b6aklv2h6h0w3" path="res://resources/skills/lorvath/skull_seeker.tres" id="4_lorvath"]
+[ext_resource type="Resource" uid="uid://b12v6d2ajwq61" path="res://resources/skills/lorvath/grave_clone.tres" id="5_lorvath"]
+[ext_resource type="Resource" uid="uid://xejv8b5ktgaw" path="res://resources/skills/lorvath/mass_revive.tres" id="6_lorvath"]
+[ext_resource type="Script" uid="uid://boo1hqs5n2vel" path="res://scripts/testing/player_test_bot.gd" id="7_lorvath"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p87f2"]
+size = Vector2(40, 50)
+
+[node name="PlayerLorvath" type="CharacterBody2D" unique_id=1566459114]
+collision_layer = 2
+collision_mask = 37
+script = ExtResource("1_lorvath")
+role = 3
+skill_1 = ExtResource("3_lorvath")
+skill_2 = ExtResource("4_lorvath")
+skill_3 = ExtResource("5_lorvath")
+ultimate = ExtResource("6_lorvath")
+ai_cast_ranges = Array[float]([300.0, 380.0, 240.0, 260.0])
+kit_script = ExtResource("2_lorvath")
+move_speed = 190.0
+exp_value = 100.0
+basic_attack_range = 300.0
+
+[node name="Body" type="Polygon2D" parent="." unique_id=931256169]
+color = Color(0.36, 0.75, 0.4, 1)
+polygon = PackedVector2Array(-20, -25, 20, -25, 20, 25, -20, 25)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=686865361]
+shape = SubResource("RectangleShape2D_p87f2")
+
+[node name="AttackOrigin" type="Marker2D" parent="." unique_id=740069259]
+position = Vector2(30, 0)
+
+[node name="AttackLockTimer" type="Timer" parent="." unique_id=2068172446]
+one_shot = true
+
+[node name="HitStunTimer" type="Timer" parent="." unique_id=1276917810]
+one_shot = true
+
+[node name="Skill1Timer" type="Timer" parent="." unique_id=2116668921]
+one_shot = true
+
+[node name="Skill2Timer" type="Timer" parent="." unique_id=872740280]
+one_shot = true
+
+[node name="Skill3Timer" type="Timer" parent="." unique_id=1476215928]
+one_shot = true
+
+[node name="UltimateTimer" type="Timer" parent="." unique_id=14375383]
+one_shot = true
+
+one_shot = true
+
+[node name="TestBot" type="Node" parent="." unique_id=190686409]
+script = ExtResource("7_lorvath")
+skill_engage_range = 380.0
+retreat_enabled = true

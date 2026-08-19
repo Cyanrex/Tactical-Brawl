@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="SkillData" format=3]
+
+[ext_resource type="Script" path="res://scripts/combat/skill_data.gd" id="1_gorred"]
+
+[resource]
+script = ExtResource("1_gorred")
+skill_name = &"blood_flurry"
+skill_type = 22
+cooldown = 10.0
+damage_multiplier = 8.0
+range = 260.0
+knockback = 60.0
+lifetime = 1.5

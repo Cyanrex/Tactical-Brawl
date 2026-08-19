@@ -1,0 +1,78 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/actors/enemy_hero.gd" id="1_nyxara"]
+[ext_resource type="Script" path="res://scripts/actors/nyxara_kit.gd" id="2_nyxara"]
+[ext_resource type="Resource" path="res://resources/skills/nyxara/void_shift.tres" id="3_nyxara"]
+[ext_resource type="Resource" path="res://resources/skills/nyxara/void_spikes.tres" id="4_nyxara"]
+[ext_resource type="Resource" path="res://resources/skills/nyxara/void_link.tres" id="5_nyxara"]
+[ext_resource type="Resource" path="res://resources/skills/nyxara/void_ball.tres" id="6_nyxara"]
+[ext_resource type="Script" path="res://scripts/ai/ai_agent.gd" id="7_nyxara"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nyxara"]
+size = Vector2(40, 50)
+
+[node name="EnemyNyxara" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 35
+script = ExtResource("1_nyxara")
+role = 2
+skill_1 = ExtResource("3_nyxara")
+skill_2 = ExtResource("4_nyxara")
+skill_3 = ExtResource("5_nyxara")
+ultimate = ExtResource("6_nyxara")
+ai_cast_ranges = Array[float]([300.0, 0.0, 0.0, 260.0])
+kit_script = ExtResource("2_nyxara")
+max_hp = 4500
+attack = 170
+hp_per_level = 2250
+attack_per_level = 25
+move_speed = 205.0
+faction = &"enemy"
+exp_value = 100.0
+basic_attack_range = 300.0
+
+[node name="AIAgent" type="Node" parent="."]
+script = ExtResource("7_nyxara")
+target_order = Array[StringName]([&"heroes", &"troops", &"structures"])
+hero_priority_range = 600.0
+skill_engage_range = 380.0
+skill_cast_order = Array[int]([1, 4])
+skill_cast_order = Array[int]([1, 2, 3, 4])
+prefer_basic_attack_in_range = true
+retreat_enabled = true
+retreat_hp_ratio = 0.2
+resume_hp_ratio = 1.0
+retreat_regen = 125.0
+
+[node name="Body" type="Polygon2D" parent="."]
+color = Color(0.5, 0.25, 0.8, 1)
+polygon = PackedVector2Array(-20, -25, 20, -25, 20, 25, -20, 25)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_nyxara")
+
+[node name="AttackOrigin" type="Marker2D" parent="."]
+position = Vector2(30, 0)
+
+[node name="AttackCooldownTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="HitStunTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="AttackLockTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="Skill1Timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="Skill2Timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="Skill3Timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="UltimateTimer" type="Timer" parent="."]
+one_shot = true
+
+one_shot = true

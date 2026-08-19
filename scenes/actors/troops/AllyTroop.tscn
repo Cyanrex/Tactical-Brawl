@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://dwjwe3pfru6hq"]
+
+[ext_resource type="Script" uid="uid://f3oi8ayq55rq" path="res://scripts/actors/troop.gd" id="1_l04uh"]
+[ext_resource type="PackedScene" uid="uid://deby8sprfslpf" path="res://scenes/combat/hitboxes/BasicAttackHitbox.tscn" id="2_2it4j"]
+[ext_resource type="Script" path="res://scripts/ai/ai_agent.gd" id="3_ai"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2it4j"]
+size = Vector2(20, 24)
+
+[node name="AllyTroop" type="CharacterBody2D" unique_id=1908604112]
+collision_layer = 2
+collision_mask = 37
+script = ExtResource("1_l04uh")
+max_hp = 1000
+attack = 60
+move_speed = 120.0
+exp_value = 25.0
+basic_attack_scene = ExtResource("2_2it4j")
+
+[node name="AIAgent" type="Node" parent="."]
+script = ExtResource("3_ai")
+target_order = Array[StringName]([&"troops", &"heroes", &"structures"])
+hero_priority_range = 90.0
+aggro_range = 90.0
+tower_priority_range = 200.0
+skip_spawn_heroes = false
+lane_push_when_idle = true
+
+[node name="Body" type="Polygon2D" parent="." unique_id=1740749464]
+color = Color(0.3764706, 0.64705884, 0.98039216, 1)
+polygon = PackedVector2Array(-10, -12, 10, -12, 10, 12, -10, 12)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=771738268]
+shape = SubResource("RectangleShape2D_2it4j")
+
+[node name="AttackOrigin" type="Marker2D" parent="." unique_id=934119545]
+position = Vector2(30, 0)
+
+[node name="AttackLockTimer" type="Timer" parent="." unique_id=1884288060]
+one_shot = true
+
+[node name="AttackCooldownTimer" type="Timer" parent="." unique_id=194674969]
+one_shot = true
+
+[node name="HitStunTimer" type="Timer" parent="." unique_id=1955963481]
+one_shot = true

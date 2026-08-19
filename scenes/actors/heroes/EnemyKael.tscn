@@ -1,0 +1,72 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" uid="uid://b01ilu22oq4ty" path="res://scripts/actors/enemy_hero.gd" id="1_13b0k"]
+[ext_resource type="Resource" path="res://resources/skills/kael/ember_fist.tres" id="2_nn0if"]
+[ext_resource type="Resource" path="res://resources/skills/kael/flame_bolts.tres" id="3_tb7l8"]
+[ext_resource type="Resource" path="res://resources/skills/kael/cinder_blast.tres" id="4_pen5w"]
+[ext_resource type="Resource" path="res://resources/skills/kael/inferno_nova.tres" id="5_kbkir"]
+[ext_resource type="Script" path="res://scripts/ai/ai_agent.gd" id="6_ai"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oe7od"]
+size = Vector2(40, 50)
+
+[node name="EnemyKael" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 35
+script = ExtResource("1_13b0k")
+max_hp = 5000
+attack = 180
+hp_per_level = 2500
+attack_per_level = 25
+move_speed = 230.0
+skill_1 = ExtResource("2_nn0if")
+skill_2 = ExtResource("3_tb7l8")
+skill_3 = ExtResource("4_pen5w")
+ultimate = ExtResource("5_kbkir")
+faction = &"enemy"
+role = 0
+exp_value = 100.0
+ai_cast_ranges = Array[float]([130.0, 320.0, 120.0, 240.0])
+
+[node name="AIAgent" type="Node" parent="."]
+script = ExtResource("6_ai")
+target_order = Array[StringName]([&"heroes", &"troops", &"structures"])
+hero_priority_range = 600.0
+skill_engage_range = 380.0
+retreat_enabled = true
+retreat_hp_ratio = 0.2
+resume_hp_ratio = 1.0
+retreat_regen = 125.0
+
+[node name="Body" type="Polygon2D" parent="."]
+color = Color(0.85, 0.22, 0.08, 1)
+polygon = PackedVector2Array(-20, -25, 20, -25, 20, 25, -20, 25)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_oe7od")
+
+[node name="AttackOrigin" type="Marker2D" parent="."]
+position = Vector2(30, 0)
+
+[node name="AttackCooldownTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="HitStunTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="AttackLockTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="Skill1Timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="Skill2Timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="Skill3Timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="UltimateTimer" type="Timer" parent="."]
+one_shot = true
+
+one_shot = true

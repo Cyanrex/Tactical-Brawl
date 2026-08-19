@@ -1,0 +1,104 @@
+[gd_scene format=3 uid="uid://c75ffr6c8ym3f"]
+
+[ext_resource type="Script" uid="uid://c6ayehltet1tv" path="res://scripts/actors/player_hero.gd" id="1_1d2x2"]
+[ext_resource type="Resource" uid="uid://bg4gkktsoyqn8" path="res://resources/skills/kael/ember_fist.tres" id="2_7dqya"]
+[ext_resource type="Resource" uid="uid://5bl0pvncffg2" path="res://resources/skills/kael/flame_bolts.tres" id="3_b2o0k"]
+[ext_resource type="Resource" uid="uid://c7xppi6sr22el" path="res://resources/skills/kael/cinder_blast.tres" id="4_cxprd"]
+[ext_resource type="Resource" uid="uid://b4gv8au7ruh2m" path="res://resources/skills/kael/inferno_nova.tres" id="5_t6t7g"]
+[ext_resource type="Script" uid="uid://boo1hqs5n2vel" path="res://scripts/testing/player_test_bot.gd" id="6_b2o0k"]
+[ext_resource type="Texture2D" uid="uid://bnd2y881m3r04" path="res://resources/assets/kael/kael.png" id="7_ufkpi"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p87f2"]
+size = Vector2(40, 50)
+
+[sub_resource type="Animation" id="Animation_w4j47"]
+length = 1.6333333
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("KaelSprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(-0.033333335, 0.79999995, 1.5333333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-10, 0), Vector2(10, 0), Vector2(-10, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("KaelSprite:flip_h")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.8, 1.5333333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [true, false, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5we5k"]
+_data = {
+&"walk_back_and_forth": SubResource("Animation_w4j47")
+}
+
+[node name="PlayerKael" type="CharacterBody2D" unique_id=927109635]
+collision_layer = 2
+collision_mask = 37
+script = ExtResource("1_1d2x2")
+skill_1 = ExtResource("2_7dqya")
+skill_2 = ExtResource("3_b2o0k")
+skill_3 = ExtResource("4_cxprd")
+ultimate = ExtResource("5_t6t7g")
+move_speed = 230.0
+exp_value = 100.0
+
+[node name="Body" type="Polygon2D" parent="." unique_id=2025318297]
+visible = false
+color = Color(0.96, 0.42, 0.12, 1)
+polygon = PackedVector2Array(-20, -25, 20, -25, 20, 25, -20, 25)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=491109414]
+shape = SubResource("RectangleShape2D_p87f2")
+
+[node name="AttackOrigin" type="Marker2D" parent="." unique_id=166782021]
+position = Vector2(30, 0)
+
+[node name="AttackLockTimer" type="Timer" parent="." unique_id=1482686112]
+one_shot = true
+
+[node name="HitStunTimer" type="Timer" parent="." unique_id=1856363443]
+one_shot = true
+
+[node name="Skill1Timer" type="Timer" parent="." unique_id=236232567]
+one_shot = true
+
+[node name="Skill2Timer" type="Timer" parent="." unique_id=179391551]
+one_shot = true
+
+[node name="Skill3Timer" type="Timer" parent="." unique_id=1909203208]
+one_shot = true
+
+[node name="UltimateTimer" type="Timer" parent="." unique_id=940845497]
+one_shot = true
+
+one_shot = true
+
+[node name="TestBot" type="Node" parent="." unique_id=82636377]
+script = ExtResource("6_b2o0k")
+skill_engage_range = 380.0
+retreat_enabled = true
+
+[node name="KaelSprite" type="Sprite2D" parent="." unique_id=2034149246]
+texture_filter = 1
+position = Vector2(-9.2, 0)
+scale = Vector2(2.1, 2.1)
+texture = ExtResource("7_ufkpi")
+flip_h = true
+vframes = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1434036749]
+libraries/ = SubResource("AnimationLibrary_5we5k")
+autoplay = &"walk_back_and_forth"

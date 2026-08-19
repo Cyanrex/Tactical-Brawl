@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="SkillData" format=3]
+
+[ext_resource type="Script" path="res://scripts/combat/skill_data.gd" id="1_spikes"]
+
+[resource]
+script = ExtResource("1_spikes")
+skill_name = &"void_spikes"
+unlock_level = 2
+skill_type = 25
+cooldown = 10.0
+damage_multiplier = 1.0
+range = 480.0
+knockback = 0.0
+lifetime = 0.5

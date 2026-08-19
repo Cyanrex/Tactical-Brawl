@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="SkillData" format=3]
+
+[ext_resource type="Script" path="res://scripts/combat/skill_data.gd" id="1_wallace"]
+
+[resource]
+script = ExtResource("1_wallace")
+skill_name = &"blood_whip"
+unlock_level = 2
+skill_type = 11
+cooldown = 12.0
+damage_multiplier = 8.4
+range = 420.0
+knockback = 60.0
+lifetime = 1.6

@@ -1,0 +1,104 @@
+[gd_scene format=3 uid="uid://d02r80bjpevax"]
+
+[ext_resource type="Script" uid="uid://coe3vr451yjsr" path="res://scenes/main/main.gd" id="1_main"]
+[ext_resource type="PackedScene" path="res://scenes/actors/heroes/PlayerKael.tscn" id="1_q24mn"]
+[ext_resource type="PackedScene" uid="uid://deby8sprfslpf" path="res://scenes/combat/hitboxes/BasicAttackHitbox.tscn" id="2_gyg6b"]
+[ext_resource type="PackedScene" path="res://scenes/actors/heroes/EnemyKael.tscn" id="3_dc040"]
+[ext_resource type="PackedScene" uid="uid://daolo4jfs7m0a" path="res://scenes/spawning/TroopSpawner.tscn" id="4_ostsq"]
+[ext_resource type="PackedScene" uid="uid://dwjwe3pfru6hq" path="res://scenes/actors/troops/AllyTroop.tscn" id="5_3km4f"]
+[ext_resource type="PackedScene" uid="uid://dmycjj0sbifd1" path="res://scenes/actors/troops/EnemyTroop.tscn" id="6_qkm1d"]
+[ext_resource type="PackedScene" uid="uid://0r0vifkd6uvb" path="res://scenes/structures/EnemyTower.tscn" id="7_p5fgu"]
+[ext_resource type="PackedScene" uid="uid://c6ybf2i1wqp6r" path="res://scenes/structures/AllyBase.tscn" id="8_2tpxt"]
+[ext_resource type="PackedScene" uid="uid://dahu35fsddswg" path="res://scenes/ui/MatchHUD.tscn" id="9_jsdfw"]
+[ext_resource type="PackedScene" path="res://scenes/actors/troops/AllyRangedTroop.tscn" id="10_rngd"]
+[ext_resource type="PackedScene" path="res://scenes/actors/troops/EnemyRangedTroop.tscn" id="11_rngd"]
+[ext_resource type="PackedScene" path="res://scenes/actors/troops/AllyEliteTroop.tscn" id="12_elte"]
+[ext_resource type="PackedScene" path="res://scenes/actors/troops/EnemyEliteTroop.tscn" id="13_elte"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1rhdn"]
+size = Vector2(4800, 40)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sjxhf"]
+size = Vector2(4800, 40)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ko0rf"]
+size = Vector2(40, 480)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ostsq"]
+size = Vector2(40, 480)
+
+[node name="Main" type="Node2D" unique_id=1511555252]
+script = ExtResource("1_main")
+arena_size = Vector2(4800, 480)
+player_hero_scene = ExtResource("1_q24mn")
+enemy_hero_scene = ExtResource("3_dc040")
+basic_attack_scene = ExtResource("2_gyg6b")
+team_size = 5
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=478025206]
+
+[node name="WallTop" type="StaticBody2D" parent="." unique_id=566480604]
+position = Vector2(0, -240)
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallTop" unique_id=1381725866]
+shape = SubResource("RectangleShape2D_1rhdn")
+
+[node name="WallBottom" type="StaticBody2D" parent="." unique_id=962694386]
+position = Vector2(0, 240)
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallBottom" unique_id=1995398812]
+shape = SubResource("RectangleShape2D_sjxhf")
+
+[node name="WallLeft" type="StaticBody2D" parent="." unique_id=1146642815]
+position = Vector2(-2400, 0)
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallLeft" unique_id=1753312735]
+shape = SubResource("RectangleShape2D_ko0rf")
+
+[node name="WallRight" type="StaticBody2D" parent="." unique_id=631906345]
+position = Vector2(2400, 0)
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallRight" unique_id=1913652420]
+shape = SubResource("RectangleShape2D_ostsq")
+
+[node name="AllySpawn" type="Marker2D" parent="." unique_id=573234972]
+position = Vector2(-2240, 0)
+
+[node name="EnemySpawn" type="Marker2D" parent="." unique_id=1986400198]
+position = Vector2(2240, 0)
+
+[node name="TroopSpawner" parent="." unique_id=1724487801 instance=ExtResource("4_ostsq")]
+ally_troop_scene = ExtResource("5_3km4f")
+enemy_troop_scene = ExtResource("6_qkm1d")
+ally_ranged_troop_scene = ExtResource("10_rngd")
+enemy_ranged_troop_scene = ExtResource("11_rngd")
+ally_elite_troop_scene = ExtResource("12_elte")
+enemy_elite_troop_scene = ExtResource("13_elte")
+
+[node name="EnemyFirstTower" parent="." unique_id=745836327 instance=ExtResource("7_p5fgu")]
+position = Vector2(780, 0)
+is_main = false
+
+[node name="EnemyMidTower" parent="." unique_id=305463770 instance=ExtResource("7_p5fgu")]
+position = Vector2(1560, 0)
+is_main = false
+
+[node name="EnemyTower" parent="." unique_id=172816344 instance=ExtResource("7_p5fgu")]
+position = Vector2(2360, 0)
+
+[node name="AllyFirstTower" parent="." unique_id=916005439 instance=ExtResource("8_2tpxt")]
+position = Vector2(-780, 0)
+is_main = false
+
+[node name="AllyMidTower" parent="." unique_id=330573657 instance=ExtResource("8_2tpxt")]
+position = Vector2(-1560, 0)
+is_main = false
+
+[node name="AllyBase" parent="." unique_id=1060205850 instance=ExtResource("8_2tpxt")]
+position = Vector2(-2360, 0)
+
+[node name="MatchHUD" parent="." unique_id=665221813 instance=ExtResource("9_jsdfw")]

@@ -1,0 +1,69 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" uid="uid://c6ayehltet1tv" path="res://scripts/actors/player_hero.gd" id="1_ren"]
+[ext_resource type="Script" path="res://scripts/actors/ren_kit.gd" id="2_ren"]
+[ext_resource type="Resource" path="res://resources/skills/ren/shadow_spike.tres" id="3_ren"]
+[ext_resource type="Resource" path="res://resources/skills/ren/shade_snare.tres" id="4_ren"]
+[ext_resource type="Resource" path="res://resources/skills/ren/shadow_step.tres" id="5_ren"]
+[ext_resource type="Resource" path="res://resources/skills/ren/black_theater.tres" id="6_ren"]
+[ext_resource type="Script" uid="uid://boo1hqs5n2vel" path="res://scripts/testing/player_test_bot.gd" id="7_ren"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ren"]
+size = Vector2(40, 50)
+
+[node name="PlayerRen" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 37
+script = ExtResource("1_ren")
+skill_1 = ExtResource("3_ren")
+skill_2 = ExtResource("4_ren")
+skill_3 = ExtResource("5_ren")
+ultimate = ExtResource("6_ren")
+role = 1
+ai_cast_ranges = Array[float]([420.0, 300.0, 160.0, 220.0])
+kit_script = ExtResource("2_ren")
+max_hp = 4750
+attack = 170
+hp_per_level = 2375
+attack_per_level = 25
+move_speed = 240.0
+exp_value = 100.0
+
+[node name="Body" type="Polygon2D" parent="."]
+color = Color(0.32, 0.28, 0.72, 1)
+polygon = PackedVector2Array(-20, -25, 20, -25, 20, 25, -20, 25)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_ren")
+
+[node name="AttackOrigin" type="Marker2D" parent="."]
+position = Vector2(30, 0)
+
+[node name="AttackLockTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="HitStunTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="Skill1Timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="Skill2Timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="Skill3Timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="UltimateTimer" type="Timer" parent="."]
+one_shot = true
+
+one_shot = true
+
+[node name="TestBot" type="Node" parent="."]
+script = ExtResource("7_ren")
+skill_engage_range = 380.0
+prefer_basic_attack_in_range = true
+retreat_enabled = true
+retreat_hp_ratio = 0.2
+resume_hp_ratio = 1.0
+retreat_regen = 125.0
